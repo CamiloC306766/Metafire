@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-light">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+      <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+      </form>
+
+      <div class="mt-3 text-center">
+        <button id="google-login" class="btn btn-outline-danger w-100">
+          <i class="bi bi-google me-2"></i> Iniciar sesión con Google
+        </button>
+      </div>
+            <!-- Botón de Facebook -->
+            <div class="mt-2 text-center">
+                <button class="btn btn-outline-primary w-100">
+                    <i class="bi bi-facebook me-2"></i> Iniciar sesión con Facebook
+                </button>
+            </div>
+      <div class="text-center mt-3">
+        <a href="index.html">Volver al inicio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SDK Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-auth-compat.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Configuración Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyBY3oE4tQb_3_45-AYzINWN1YaI2ypnUuE",
+        authDomain: "integracionmetafirebase.firebaseapp.com",
+        projectId: "integracionmetafirebase",
+        storageBucket: "integracionmetafirebase.firebasestorage.app",
+        messagingSenderId: "671107320019",
+        appId: "1:671107320019:web:3c5d3fe6592c7d5f48ec26",
+        measurementId: "G-QL1PSJCCVH"
+      };
+
+      // Inicializar Firebase (una sola vez)
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+
+      const auth = firebase.auth();
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      // Iniciar sesión con Google
+      document.getElementById('google-login').addEventListener('click', () => {
+        auth.signInWithPopup(provider)
+          .then(result => {
+            const user = result.user;
+            alert(`Bienvenido, ${user.displayName}`);
+            window.location.href = "page.html";
+          })
+          .catch(error => {
+            console.error("Error en login Google:", error);
+            alert("Error al iniciar sesión con Google: " + error.message);
+          });
+      });
+
+      // Si ya está autenticado, redirigir
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          window.location.href = "page.html";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
