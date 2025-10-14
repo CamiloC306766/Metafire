@@ -24,23 +24,29 @@
     fbq('init', '827695997093259');
     fbq('track', 'PageView');
   </script>
+
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-KCXKTCPB');</script>
   <!-- End Google Tag Manager -->
 </head>
 
 <body class="bg-light">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCXKTCPB" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCXKTCPB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
       <h3 class="text-center mb-4">Iniciar Sesión</h3>
@@ -59,17 +65,20 @@
         <button type="submit" class="btn btn-primary w-100">Ingresar</button>
       </form>
 
+      <!-- Botón de Google -->
       <div class="mt-3 text-center">
         <button id="google-login" class="btn btn-outline-danger w-100">
           <i class="bi bi-google me-2"></i> Iniciar sesión con Google
         </button>
       </div>
+
       <!-- Botón de Facebook -->
       <div class="mt-2 text-center">
-        <button class="btn btn-outline-primary w-100">
+        <button id="facebook-login" class="btn btn-outline-primary w-100">
           <i class="bi bi-facebook me-2"></i> Iniciar sesión con Facebook
         </button>
       </div>
+
       <div class="text-center mt-3">
         <a href="index.html">Volver al inicio</a>
       </div>
@@ -93,17 +102,20 @@
         measurementId: "G-QL1PSJCCVH"
       };
 
-      // Inicializar Firebase (una sola vez)
+      // Inicializar Firebase
       if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
       }
 
       const auth = firebase.auth();
-      const provider = new firebase.auth.GoogleAuthProvider();
 
-      // Iniciar sesión con Google
+      // 🔹 Proveedores de autenticación
+      const googleProvider = new firebase.auth.GoogleAuthProvider();
+      const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+      // 🔹 Iniciar sesión con Google
       document.getElementById('google-login').addEventListener('click', () => {
-        auth.signInWithPopup(provider)
+        auth.signInWithPopup(googleProvider)
           .then(result => {
             const user = result.user;
             alert(`Bienvenido, ${user.displayName}`);
@@ -115,7 +127,21 @@
           });
       });
 
-      // Si ya está autenticado, redirigir
+      // 🔹 Iniciar sesión con Facebook
+      document.getElementById('facebook-login').addEventListener('click', () => {
+        auth.signInWithPopup(facebookProvider)
+          .then(result => {
+            const user = result.user;
+            alert(`Bienvenido, ${user.displayName}`);
+            window.location.href = "page.html";
+          })
+          .catch(error => {
+            console.error("Error en login Facebook:", error);
+            alert("Error al iniciar sesión con Facebook: " + error.message);
+          });
+      });
+
+      // 🔹 Si ya está autenticado, redirigir
       auth.onAuthStateChanged(user => {
         if (user) {
           window.location.href = "page.html";
