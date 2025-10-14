@@ -211,12 +211,19 @@
       document.getElementById('google-login').addEventListener('click', () => {
         auth.signInWithPopup(googleProvider)
           .then(result => {
+            // 🔹 Enviar evento al dataLayer para GTM
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'google_login',
+              method: 'Google',
+              user_name: result.user.displayName
+            });
+
             alert(`Bienvenido, ${result.user.displayName}`);
             window.location.href = "page.html";
           })
           .catch(error => console.error("Error en login Google:", error));
       });
-
       // Facebook login
       document.getElementById('facebook-login').addEventListener('click', () => {
         auth.signInWithPopup(facebookProvider)
