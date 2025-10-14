@@ -1,25 +1,27 @@
-<!DOCTYPE html>
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar Sesión | Tienda Ropa</title>
 
-  <link rel="icon" type="image/png" href="https://images.icon-icons.com/1846/PNG/512/shop_116167.png">
-  <!-- Google tag (gtag.js) -->
+  <!-- Ícono -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6570/6570900.png">
+
+  <!-- Bootstrap y estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DKXN50Z08"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-7DKXN50Z08');
   </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
@@ -37,7 +39,8 @@
   </script>
 
   <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
+  <script>
+    (function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
         'gtm.start': new Date().getTime(), event: 'gtm.js'
       });
@@ -46,63 +49,146 @@
       j.async = true; j.src =
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KCXKTCPB');</script>
-  <!-- End Google Tag Manager -->
+    })(window, document, 'script', 'dataLayer', 'GTM-KCXKTCPB');
+  </script>
+
+  <!-- Estilo uniforme con index -->
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-image: url("https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #000;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.75);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.85) !important;
+    }
+
+    .navbar-dark .nav-link,
+    .navbar-dark .navbar-brand {
+      color: #fff !important;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      border: none;
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h3 {
+      color: #000;
+      font-weight: 600;
+    }
+
+    label {
+      color: #000;
+    }
+
+    .btn-primary {
+      background-color: #000;
+      border: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #333;
+    }
+
+    .btn-outline-danger,
+    .btn-outline-primary {
+      border-radius: 30px;
+      padding: 10px;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
-<body class="bg-light">
+<body>
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCXKTCPB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe>
   </noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-      <h3 class="text-center mb-4">Iniciar Sesión</h3>
+  <div class="overlay">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Tienda MetaFire</a>
+      </div>
+    </nav>
 
-      <form>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+    <!-- Contenido principal -->
+    <div class="content">
+      <div class="card shadow">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+        </form>
+
+        <div class="mt-3 text-center">
+          <button id="google-login" class="btn btn-outline-danger w-100 mb-2">
+            <i class="bi bi-google me-2"></i> Iniciar sesión con Google
+          </button>
+          <button id="facebook-login" class="btn btn-outline-primary w-100">
+            <i class="bi bi-facebook me-2"></i> Iniciar sesión con Facebook
+          </button>
         </div>
 
-        <div class="mb-3">
-          <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+        <div class="text-center mt-3">
+          <a href="index.html">Volver al inicio</a>
         </div>
-
-        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-      </form>
-
-      <!-- Botón de Google -->
-      <div class="mt-3 text-center">
-        <button id="google-login" class="btn btn-outline-danger w-100">
-          <i class="bi bi-google me-2"></i> Iniciar sesión con Google
-        </button>
-      </div>
-
-      <!-- Botón de Facebook -->
-      <div class="mt-2 text-center">
-        <button id="facebook-login" class="btn btn-outline-primary w-100">
-          <i class="bi bi-facebook me-2"></i> Iniciar sesión con Facebook
-        </button>
-      </div>
-
-      <div class="text-center mt-3">
-        <a href="index.html">Volver al inicio</a>
       </div>
     </div>
   </div>
 
-  <!-- SDK Firebase -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-auth-compat.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Configuración Firebase
       const firebaseConfig = {
         apiKey: "AIzaSyBY3oE4tQb_3_45-AYzINWN1YaI2ypnUuE",
         authDomain: "integracionmetafirebase.firebaseapp.com",
@@ -113,44 +199,35 @@
         measurementId: "G-QL1PSJCCVH"
       };
 
-      // Inicializar Firebase
       if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
       }
 
       const auth = firebase.auth();
-
-      // 🔹 Proveedores de autenticación
       const googleProvider = new firebase.auth.GoogleAuthProvider();
       const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
-      // 🔹 Iniciar sesión con Google
+      // Google login
       document.getElementById('google-login').addEventListener('click', () => {
         auth.signInWithPopup(googleProvider)
           .then(result => {
-            const user = result.user;
-            alert(`Bienvenido, ${user.displayName}`);
+            alert(`Bienvenido, ${result.user.displayName}`);
             window.location.href = "page.html";
           })
-          .catch(error => {
-            console.error("Error en login Google:", error);
-          });
+          .catch(error => console.error("Error en login Google:", error));
       });
 
-      // 🔹 Iniciar sesión con Facebook
+      // Facebook login
       document.getElementById('facebook-login').addEventListener('click', () => {
         auth.signInWithPopup(facebookProvider)
           .then(result => {
-            const user = result.user;
-            alert(`Bienvenido, ${user.displayName}`);
+            alert(`Bienvenido, ${result.user.displayName}`);
             window.location.href = "page.html";
           })
-          .catch(error => {
-            console.error("Error en login Facebook:", error);
-          });
+          .catch(error => console.error("Error en login Facebook:", error));
       });
 
-      // 🔹 Si ya está autenticado, redirigir
+      // Redirigir si ya está autenticado
       auth.onAuthStateChanged(user => {
         if (user) {
           window.location.href = "page.html";
@@ -159,5 +236,3 @@
     });
   </script>
 </body>
-
-</html>
