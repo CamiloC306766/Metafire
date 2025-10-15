@@ -2,6 +2,16 @@
 <html lang="es">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KCXKTCPB');</script>
+  <!-- End Google Tag Manager -->
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6570/6570900.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -132,28 +142,13 @@
     fbq('init', '827695997093259');
     fbq('track', 'PageView');
   </script>
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start': new Date().getTime(), event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true; j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KCXKTCPB');
-  </script>
   <script src="config.js"></script>
 </head>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCXKTCPB" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCXKTCPB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <div class="overlay">
@@ -266,12 +261,12 @@
     function cerrarSesion() {
       auth.signOut()
         .then(() => {
-        
+
           window.location.href = "index.html";
         })
         .catch(error => {
           console.error("Error al cerrar sesión:", error);
-        
+
         });
     }
   </script>
