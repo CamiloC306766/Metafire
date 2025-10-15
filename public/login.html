@@ -226,16 +226,22 @@
           })
           .catch(error => console.error("Error en login Google:", error));
       });
-      // Facebook login
       document.getElementById('facebook-login').addEventListener('click', () => {
         auth.signInWithPopup(facebookProvider)
           .then(result => {
+            // 🔹 Enviar evento personalizado al dataLayer para Google Tag Manager
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'facebook_login',     // Nombre del evento que GTM detectará
+              method: 'Facebook',          // Parámetro útil para GA4
+              user_name: result.user.displayName // opcional
+            });
+
             alert(`Bienvenido, ${result.user.displayName}`);
             window.location.href = "page.html";
           })
           .catch(error => console.error("Error en login Facebook:", error));
       });
-
       // Redirigir si ya está autenticado
       auth.onAuthStateChanged(user => {
         if (user) {
